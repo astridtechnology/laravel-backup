@@ -9,7 +9,7 @@ A one stop solution for Laravel backups.
 
 Install the package by the following command,
 
-    composer require AstridTechnology/LaravelBackup
+    composer require atindia/laravel-backup
 
 ## Configuration
 
