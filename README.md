@@ -3,6 +3,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/astridtechnology/laravel-backup?style=for-the-badge)](https://github.com/astridtechnology/laravel-backup)
 
 # Laravel Backup
+
 Laravel Backup offers a comprehensive solution for managing backups within your Laravel application, streamlining the process with ease.
 
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://astridtechnology.com/wp-content/uploads/2024/05/laravel-backup.gif"><img src="https://astridtechnology.com/wp-content/uploads/2024/05/laravel-backup.gif" style="width: 100%; max-width: 100%; display: inline-block;">
@@ -10,13 +11,19 @@ Laravel Backup offers a comprehensive solution for managing backups within your 
 
 ## Installation
 
+Before installing this package, please ensure you have installed and configured the prerequisite package <a href="https://packagist.org/packages/spatie/laravel-backup">spatie/laravel-backup</a>:
+
+    composer require spatie/laravel-backup
+
 To integrate Laravel Backup into your project, execute the following Composer command:
 
     composer require atindia/laravel-backup
 
 ## Configuration
 
-After installation, include the provider in your config/app.php under the providers array:
+In earlier versions of Laravel, providers were typically registered in the config/app.php file. However, with the evolution of Laravel 11.x and beyond, many configurations have been relocated to the /bootstrap directory.
+
+In Laravel 11.x and later, the bootstrap/providers.php file returns an array containing all the providers that will be registered in your application. To include the Laravel Backup provider, add the following line to this array:
 
     AstridTechnology\LaravelBackup\Providers\AstridBackupServiceProvider::class,
 

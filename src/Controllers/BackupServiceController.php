@@ -5,6 +5,7 @@ namespace AstridTechnology\LaravelBackup\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Queue;
 use AstridTechnology\LaravelBackup\ProjectBackup;
 
@@ -44,9 +45,11 @@ class BackupServiceController
     public function createBackup()
     {
         try {
-            $newFunction = new ProjectBackup;
-            $result = $newFunction->generateBackup();
-            return $result;
+            Artisan::call('backup:run');
+            return response()->json([
+                'message' => 'Backup job has been queued successfully',
+                'success' => true
+            ]);
         } catch (Exception $ex) {
             $output = [];
             $success = false;
