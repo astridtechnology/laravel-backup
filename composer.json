@@ -1,0 +1,19 @@
+{
+    "name": "atindia/laravel-backup",
+    "description": "We provide functionality to perform full backups of the Laravel application, including database backups, file backups.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "AstridTechnology\\LaravelBackup\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Astrid Technology",
+            "email":"hello@astridtechnology.com"
+        }
+    ],
+    "require": {
+        "spatie/laravel-backup":"^8.0"
+    }
+}
