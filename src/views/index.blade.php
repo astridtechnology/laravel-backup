@@ -7,7 +7,7 @@
     <link rel="icon" href="https://astridtechnology.com/wp-content/uploads/2024/02/a3-150x150.png" sizes="32x32" />
     <link rel="icon" href="https://astridtechnology.com/wp-content/uploads/2024/02/a3-300x300.png" sizes="192x192" />
     <link rel="apple-touch-icon" href="https://astridtechnology.com/wp-content/uploads/2024/02/a3-300x300.png" />
-    <title>Astrid Backup Plugin</title>
+    <title>Astrid Backup Panel</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -185,7 +185,7 @@
             toggleLoader('createBackupLoader', false);
 
             // Send AJAX request to trigger backup creation
-            fetch('{{ route('create - backup ') }}', {
+            fetch('{{ route('create-backup') }}', {
                         method: 'GET',
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -209,8 +209,10 @@
 
             let progress = 0;
             const interval = setInterval(() => {
-                progress += 10;
-                if (progress > 100) {
+                progress += 5;
+                if (progress >= 100) {
+                    progress = 100;
+                    toggleLoader('createBackupLoader', true);
                     clearInterval(interval);
                 }
                 updateProgressStatus(progress);
@@ -225,7 +227,7 @@
                 const filename = this.getAttribute('data-filename');
                 if (confirm(`Are you sure you want to delete ${filename}?`)) {
                     // Send AJAX request to delete the directory
-                    fetch('{{ route('delete.file ') }}', {
+                    fetch('{{ route('delete.file') }}', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',
